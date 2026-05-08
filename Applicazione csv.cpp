@@ -3,9 +3,9 @@
 using namespace std;
 
 struct location{
-	double 1;
-	double 2;
-}
+	double lt;
+	double lg;
+};
 
 struct g{
 	string ClasseToponimo;

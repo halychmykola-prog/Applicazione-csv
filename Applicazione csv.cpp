@@ -7,7 +7,7 @@ struct location{
 	double lg;
 };
 
-struct g{
+struct numerazione_civica{
 	string ClasseToponimo;
 	string DescrizioneToponimo;
 	string numero;
@@ -22,6 +22,7 @@ struct g{
 
 int main()
 {
+	numerazione_civica dati[100];
 
 
 

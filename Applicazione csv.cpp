@@ -13,7 +13,7 @@ struct numerazione_civica{
 	string DescrizioneToponimo;
 	string numero;
 	string Subalterno;
-	int CAP;
+	string CAP;
 	int SezioneISTAT;
 	double Lat;
 	double Lon;
@@ -38,7 +38,23 @@ void carica_dati(numerazione_civica array[], string file_name)
     string linea;
 
     if (fileInput.is_open()) {
-        while (fileInput>>linea){ //getline(fileInput, linea)) { // Legge riga per riga
+    	int counter=0;
+        while (getline(fileInput, linea))// { // Legge riga per riga //fileInput>>linea
+		{
+			array[counter]=linea;//riga sbagliata
+			cout<<endl<<endl<<endl<<endl;
+			
+			cout<<array[counter].ClasseToponimo;
+			cout<<array[counter].DescrizioneToponimo;
+			cout<<array[counter].numero;
+			cout<<array[counter].Subalterno;
+			cout<<array[counter].CAP;
+			cout<<array[counter].SezioneISTAT;
+			cout<<array[counter].Lat;
+			cout<<array[counter].Lon;
+			cout<<array[counter].Loc.lt;
+			cout<<array[counter].Loc.lg;
+		
         	
         }
         fileInput.close(); // Chiude lo stream

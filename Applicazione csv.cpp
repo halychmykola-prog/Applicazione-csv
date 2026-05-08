@@ -2,20 +2,21 @@
 #include <string>
 using namespace std;
 
-
+struct location{
+	double 1;
+	double 2;
+}
 
 struct g{
 	string ClasseToponimo;
 	string DescrizioneToponimo;
-	int numero;
+	string numero;
 	string Subalterno;
 	int CAP;
 	int SezioneISTAT;
 	double Lat;
 	double Lon;
-	double Location;
-	
-
+	location Loc;
 	
 };
 

@@ -73,7 +73,8 @@ void carica_dati(numerazione_civica array[], string file_name)
 			array[counter].numero = linea;
 			array[counter].Subalterno = linea;
 			array[counter].CAP = linea;
-			array[counter].SezioneISTAT = to_int(linea);
+			stoi(linea, 0, 10);
+			array[counter].SezioneISTAT = linea;
 			array[counter].Lat = linea;
 			array[counter].Lon = linea;
 			array[counter].location.lg = linea;

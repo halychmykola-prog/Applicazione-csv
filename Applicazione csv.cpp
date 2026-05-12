@@ -26,11 +26,38 @@ nel campo con lettura e poi passare il campo a struttura
 
 */
 
+void swap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int partition(int arr[], int left, int right) {
+    int pivot = arr[right], i = left - 1;
+    for (int j = left; j <= right - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[right]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int left, int right) {
+    if (left < right) {
+        int pi = partition(arr, left, right);
+        quickSort(arr, left, pi - 1);
+        quickSort(arr, pi + 1, right);
+    }
+}
+
 string visualizzazione(numerazione_civica array[])
 {
 	
 	
 };
+
 
 void carica_dati(numerazione_civica array[], string file_name)
 {
@@ -39,9 +66,21 @@ void carica_dati(numerazione_civica array[], string file_name)
 
     if (fileInput.is_open()) {
     	int counter=0;
-        while (getline(fileInput, linea))// { // Legge riga per riga //fileInput>>linea
+        while (fileInput>>linea)// { // Legge riga per riga //
 		{
-			array[counter]=linea;//riga sbagliata
+			array[counter].ClasseToponimo = linea;//riga sbagliata
+			array[counter].DescrizioneToponimo = linea;
+			array[counter].numero = linea;
+			array[counter].Subalterno = linea;
+			array[counter].CAP = linea;
+			array[counter].SezioneISTAT = to_int(linea);
+			array[counter].Lat = linea;
+			array[counter].Lon = linea;
+			array[counter].location.lg = linea;
+			array[counter].location. = linea;
+
+
+
 			cout<<endl<<endl<<endl<<endl;
 			
 			cout<<array[counter].ClasseToponimo;
@@ -64,6 +103,16 @@ void carica_dati(numerazione_civica array[], string file_name)
 	
 
 };
+
+void cercavia()//mostra tutti numeri civici con via data
+{
+	
+};
+
+
+
+
+
 
 int main()
 {

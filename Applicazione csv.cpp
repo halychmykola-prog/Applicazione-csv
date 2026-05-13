@@ -52,55 +52,65 @@ void quickSort(int arr[], int left, int right) {
     }
 }
 
-string visualizzazione(numerazione_civica array[])
+/*
+string visualizzazione(numerazione_civica array[], int size)
 {
 	
 	
 };
+*/
 
 
 void carica_dati(numerazione_civica array[], string file_name)
 {
-	ifstream fileInput("testo.txt"); // Apre il file
+	ifstream fileInput(file_name); // Apre il file
     string linea;
+    int counter=0;
 
-    if (fileInput.is_open()) {
-    	int counter=0;
-        while (fileInput>>linea)// { // Legge riga per riga //
-		{
-			array[counter].ClasseToponimo = linea;//riga sbagliata
-			array[counter].DescrizioneToponimo = linea;
-			array[counter].numero = linea;
-			array[counter].Subalterno = linea;
-			array[counter].CAP = linea;
-			stoi(linea, 0, 10);
-			array[counter].SezioneISTAT = linea;
-			array[counter].Lat = linea;
-			array[counter].Lon = linea;
-			array[counter].location.lg = linea;
-			array[counter].location. = linea;
-
-
-
-			cout<<endl<<endl<<endl<<endl;
-			
-			cout<<array[counter].ClasseToponimo;
-			cout<<array[counter].DescrizioneToponimo;
-			cout<<array[counter].numero;
-			cout<<array[counter].Subalterno;
-			cout<<array[counter].CAP;
-			cout<<array[counter].SezioneISTAT;
-			cout<<array[counter].Lat;
-			cout<<array[counter].Lon;
-			cout<<array[counter].Loc.lt;
-			cout<<array[counter].Loc.lg;
-		
-        	
-        }
-        fileInput.close(); // Chiude lo stream
-    } else {
-        cout << "Impossibile aprire il file";
+    if (!fileInput.is_open()) {
+        cout<<"Errore: Impossibile aprire il file "<<file_name<< endl;
+        return;
     }
+    else
+    {
+        while (fileInput >> linea && counter < 1500)// { // Legge riga per riga //
+		{
+			array[counter].ClasseToponimo = linea;
+            
+            fileInput >> linea;
+            array[counter].DescrizioneToponimo = linea;
+            
+            fileInput >> linea;
+            array[counter].numero = linea;
+            
+            fileInput>>linea;
+            array[counter].Subalterno = linea;
+            
+            fileInput >> linea;
+            array[counter].CAP = linea;
+            
+            fileInput >> linea;
+            array[counter].SezioneISTAT = stoi(linea); 
+            
+            fileInput >> linea;
+            array[counter].Lat = stod(linea); 
+            
+            fileInput >> linea;
+            array[counter].Lon = stod(linea); 
+            
+            fileInput >> linea;
+            array[counter].Loc.lt = stod(linea); 
+            
+            fileInput >> linea;
+            array[counter].Loc.lg = stod(linea);
+
+            
+            cout << "\nCaricato elemento " << counter << ": " << array[counter].DescrizioneToponimo;
+            
+            counter++; 
+        }
+        fileInput.close();
+    } 
 	
 
 };
@@ -119,6 +129,7 @@ int main()
 {
 	numerazione_civica dati[1500];
 	int scelta=0;
+    string helpstring;
 	
 	do
 	{
@@ -135,13 +146,21 @@ int main()
 		cout<<endl;
 		
 		
-		switch(scelta)
+		
+        switch(scelta)
 		{
-		    /*
 		    
-		    */
+		    
+		    
 		    case 1:
-		    	break;
+                carica_dati(dati, "numerazione_civica.csv");
+                break;
+		    	
+
+            default:
+                helpstring = "Scelta non valida. Riprova.";
+                cout<<helpstring<<endl;
+                break;
 		}
 		    	
 		    	

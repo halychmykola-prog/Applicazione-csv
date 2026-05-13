@@ -52,13 +52,28 @@ void quickSort(int arr[], int left, int right) {
     }
 }
 
-/*
+
 string visualizzazione(numerazione_civica array[], int size)
 {
+    string output;
+	for(int i=0;i<size;i++)
+	{
+		output += array[i].ClasseToponimo+"\t";
+		output += array[i].DescrizioneToponimo+"\t";
+        output += array[i].numero+"\t";
+        output += array[i].Subalterno+"\t";
+        output += array[i].CAP+"\t";
+        output += to_string(array[i].SezioneISTAT)+"\t";
+        output += to_string(array[i].Lat)+"\t";
+        output += to_string(array[i].Lon)+"\t";
+		output += to_string(array[i].Loc.lt)+"\t";
+        output += to_string(array[i].Loc.lg)+"\t";
+	}
+	return output;
 	
 	
 };
-*/
+
 
 
 void carica_dati(numerazione_civica array[], string file_name)
@@ -105,7 +120,6 @@ void carica_dati(numerazione_civica array[], string file_name)
             array[counter].Loc.lg = stod(linea);
 
             
-            cout << "\nCaricato elemento " << counter << ": " << array[counter].DescrizioneToponimo;
             
             counter++; 
         }
@@ -150,12 +164,15 @@ int main()
         switch(scelta)
 		{
 		    
-		    
-		    
 		    case 1:
                 carica_dati(dati, "numerazione_civica.csv");
+                helpstring = "Dati caricati con successo.";
+                cout<<helpstring<<endl;
                 break;
-		    	
+		    
+            case 2:
+                cout<<visualizzazione(dati, 1500)<<endl;
+                break;
 
             default:
                 helpstring = "Scelta non valida. Riprova.";

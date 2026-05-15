@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
+
 using namespace std;
 
 struct location{
@@ -50,7 +52,7 @@ void quickSort(int arr[], int left, int right) {
         quickSort(arr, left, pi - 1);
         quickSort(arr, pi + 1, right);
     }
-}
+}	
 
 
 string visualizzazione(numerazione_civica array[], int size)
@@ -67,7 +69,7 @@ string visualizzazione(numerazione_civica array[], int size)
         output += to_string(array[i].Lat)+"\t";
         output += to_string(array[i].Lon)+"\t";
 		output += to_string(array[i].Loc.lt)+"\t";
-        output += to_string(array[i].Loc.lg)+"\t";
+        output += to_string(array[i].Loc.lg)+"\n";
 	}
 	return output;
 	
@@ -88,8 +90,9 @@ void carica_dati(numerazione_civica array[], string file_name)
     }
     else
     {
-        while (fileInput >> linea && counter < 1500)// { // Legge riga per riga //
+        while (fileInput >> linea && counter < 1500)// Legge riga per riga 
 		{
+			
 			array[counter].ClasseToponimo = linea;
             
             fileInput >> linea;
@@ -99,7 +102,13 @@ void carica_dati(numerazione_civica array[], string file_name)
             array[counter].numero = linea;
             
             fileInput>>linea;
-            array[counter].Subalterno = linea;
+            if(linea=="")
+            {
+            	array[counter].Subalterno = "";
+			}
+			else
+				array[counter].Subalterno = linea;
+				
             
             fileInput >> linea;
             array[counter].CAP = linea;
@@ -128,6 +137,8 @@ void carica_dati(numerazione_civica array[], string file_name)
 	
 
 };
+
+
 
 void cercavia()//mostra tutti numeri civici con via data
 {
@@ -165,7 +176,7 @@ int main()
 		{
 		    
 		    case 1:
-                carica_dati(dati, "numerazione_civica.csv");
+                carica_dati(dati, "Comune_Bergamo_-_Numerazione_civica (1).csv");
                 helpstring = "Dati caricati con successo.";
                 cout<<helpstring<<endl;
                 break;
@@ -173,6 +184,10 @@ int main()
             case 2:
                 cout<<visualizzazione(dati, 1500)<<endl;
                 break;
+            
+            case 0:
+            	cout<<endl<<endl<<"end";
+            	break;
 
             default:
                 helpstring = "Scelta non valida. Riprova.";
@@ -197,3 +212,6 @@ int main()
 
     return 0;
 }
+
+
+
